@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Obtenible : MonoBehaviour
 {
+    string playerTag = "Player";
     public float velocidadRotamiento = 90f;
     void Start()
     {
@@ -18,17 +19,13 @@ public class Obtenible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.GetComponent<Obstaculo>() != null )
-        {
-            Destroy(gameObject);
-            return;
-        }
-        if(other.gameObject.name != "Player")
+        Debug.Log("Chocaste");
+        if(!other.gameObject.CompareTag (playerTag))
         { 
             return; 
         }
-
-        GameManager.instancia.IndicadorSobredosis++;
+        Debug.Log("Chocaste con el jugador");
+        GameManager.instancia.sumarSobredosis();
 
         Destroy(gameObject); //temporal, mejor desactivar el objeto para mayor eficiencia si podemos :)
     }

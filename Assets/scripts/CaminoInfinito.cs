@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CaminoInfinito : MonoBehaviour
 {
-    public Transform player;
-    public GameObject segmentoPrefab; 
-    public float longitudCamino = 50f; 
-    public int segmentosIniciales = 5;
+    [SerializeField]private Transform player;
+    [SerializeField] private GameObject segmentoPrefab;
+    [SerializeField] private float longitudCamino = 50f;
+    [SerializeField] private int segmentosIniciales = 5;
 
     private Queue<GameObject> segmentos = new Queue<GameObject>();
 
