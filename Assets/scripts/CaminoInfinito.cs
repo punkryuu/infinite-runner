@@ -1,33 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CaminoInfinito : MonoBehaviour
 {
     [SerializeField]private Transform player;
     [SerializeField] private GameObject segmentoPrefab;
-    [SerializeField] private float longitudCamino = 50f;
+    [SerializeField] private float longitudCamino = 100f;
     [SerializeField] private int segmentosIniciales = 5;
-
     private Queue<GameObject> segmentos = new Queue<GameObject>();
-
-    private void OnTriggerEnter(Collider other)
+    string playerTag = "Player";
+    private void Start()
     {
-        if (other.CompareTag("Jugador"))
+        Vector3 posicion = segmentoPrefab.transform.position;
+        for (int i = 0; i < segmentosIniciales; i++)
         {
-            if (segmentos.Count == 0)
-            {
-                Debug.Log("No se está creado");
-                return;
-            }
-               
+            GameObject segmento = Instantiate(segmentoPrefab, posicion, Quaternion.identity);
+            segmentos.Enqueue(segmento);
+            posicion += new Vector3(0, 0, longitudCamino);
+        }
+    }
+   
+    //ahora se llama al trigger enter desde el prefab 
+    public void CrearSegmento(GameObject segmento)
+    {             
             // Remove the oldest segment
             GameObject viejo = segmentos.Dequeue();
-            Destroy(viejo);
-            Vector3 nuevaPos = segmentos.Peek().transform.position + new Vector3(0, 0, longitudCamino);
-            GameObject nuevo = Instantiate(segmentoPrefab, nuevaPos, Quaternion.identity);
-            segmentos.Enqueue(nuevo);
-        }
+            //reciclamos el segmento viejo poniendolo delante
+            Vector3 nuevaPos = segmentos.Last().transform.position + new Vector3(0, 0, longitudCamino);
+            viejo.transform.position = nuevaPos;
+            segmentos.Enqueue(viejo);       
     }  
     
     // Update is called once per frame
