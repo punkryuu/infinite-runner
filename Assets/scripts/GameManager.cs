@@ -47,4 +47,9 @@ public class GameManager : MonoBehaviour
         }
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
     }
+    //esto es para que no se vea todo distorsionado en el editor cuando cerramos el juego
+    private void OnApplicationQuit()
+    {
+        if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
+    }
 }
