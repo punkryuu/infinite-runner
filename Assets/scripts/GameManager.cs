@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int indicadorSobredosis;
+    private int indicadorSobredosis;
+    public int IndicadorSobredosis {get;set;}
     public static GameManager instancia;
 
     public void Awake()

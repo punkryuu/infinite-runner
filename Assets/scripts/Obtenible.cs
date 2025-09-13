@@ -28,7 +28,7 @@ public class Obtenible : MonoBehaviour
             return; 
         }
 
-        GameManager.instancia.indicadorSobredosis++;
+        GameManager.instancia.IndicadorSobredosis++;
 
         Destroy(gameObject); //temporal, mejor desactivar el objeto para mayor eficiencia si podemos :)
     }
