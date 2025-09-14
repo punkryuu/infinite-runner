@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
-    [SerializeField] float velocidad = 10;
-    [SerializeField] float velocidadLateral = 10;
-    [SerializeField] float fuerzaSalto = 600f;
+    public float velocidad = 10;
+    float velocidadLateral = 10;
+    float fuerzaSalto = 600f;
     [SerializeField] LayerMask capaSuelo;
     [SerializeField] CapsuleCollider hitboxJugador;
     float fuerzaLateral = 45f;
-    [SerializeField] Rigidbody rb;
+    public Rigidbody rb;
     public float tiempoVelocidad = 0;
     public float tiempo = 0;
     float alturaOriginal ;
     float alturaAgache  ;
+    public bool invulnerable;
     Vector3 centroOriginal;
     Vector3 centroAgache;
+    float fuerzaChoque = 30f;
 
     void Start()
     {
@@ -42,11 +44,15 @@ public class Movimiento : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector3 movimientoFrontal = transform.forward * velocidad;
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movimientoFrontal.z);
-        tiempo = tiempo + Time.deltaTime;
-        tiempoVelocidad = tiempoVelocidad + Time.deltaTime;
-        ReducirVelocidad();           
+        if (!invulnerable)
+        {
+            Vector3 movimientoFrontal = transform.forward * velocidad;
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movimientoFrontal.z);
+
+            tiempo += Time.deltaTime;
+            tiempoVelocidad += Time.deltaTime;
+            ReducirVelocidad();
+        }
     }
     void ReducirVelocidad()
     {
@@ -60,12 +66,35 @@ public class Movimiento : MonoBehaviour
             tiempoVelocidad = 0;
         }
     }
+    IEnumerator invulnerabilidad()
+    {
+        invulnerable = true;
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log("invulnerable");
+
+        invulnerable = false;
+
+    }
+    public void Choque() 
+    {
+
+        if (!invulnerable)
+        {
+            GameManager.instancia.restarSobredosis();
+            Vector3 direccionChoque = -transform.forward * velocidad/2; // con la velocidad creo que queda más natural 
+            rb.AddForce(direccionChoque, ForceMode.Impulse);
+            StartCoroutine(invulnerabilidad());
+        }
+    }
     void MovimientoLateral()
     {
-        float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
-        Vector3 velocidadLateral = rb.velocity;
-        velocidadLateral.x = direccion * fuerzaLateral;
-        rb.velocity = velocidadLateral;      
+
+         float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
+         Vector3 velocidadLateral = rb.velocity;
+         velocidadLateral.x = direccion * fuerzaLateral;
+         rb.velocity = velocidadLateral;
+        
     }
     void Saltar()
     {
