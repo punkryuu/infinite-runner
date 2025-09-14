@@ -34,10 +34,10 @@ public class Ostaculo : MonoBehaviour
         movimientoJugador.invulnerable=false;
         
     }
-     void OnCollision(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         Debug.Log("Chocaste");
-        if (!other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag(playerTag))
         {
             return;
         }

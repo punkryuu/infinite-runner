@@ -31,7 +31,9 @@ public class Movimiento : MonoBehaviour
 
     private void Update()
     {
-        MovimientoLateral();
+        if (!invulnerable) {
+            MovimientoLateral();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Saltar();
@@ -43,11 +45,15 @@ public class Movimiento : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector3 movimientoFrontal = transform.forward * velocidad;
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movimientoFrontal.z);
-        tiempo = tiempo + Time.deltaTime;
-        tiempoVelocidad = tiempoVelocidad + Time.deltaTime;
-        ReducirVelocidad();           
+        if (!invulnerable)
+        {
+            Vector3 movimientoFrontal = transform.forward * velocidad;
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, movimientoFrontal.z);
+
+            tiempo += Time.deltaTime;
+            tiempoVelocidad += Time.deltaTime;
+            ReducirVelocidad();
+        }
     }
     void ReducirVelocidad()
     {
@@ -63,10 +69,12 @@ public class Movimiento : MonoBehaviour
     }
     void MovimientoLateral()
     {
-        float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
-        Vector3 velocidadLateral = rb.velocity;
-        velocidadLateral.x = direccion * fuerzaLateral;
-        rb.velocity = velocidadLateral;      
+
+            float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
+            Vector3 velocidadLateral = rb.velocity;
+            velocidadLateral.x = direccion * fuerzaLateral;
+            rb.velocity = velocidadLateral;
+        
     }
     void Saltar()
     {
