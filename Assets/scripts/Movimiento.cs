@@ -19,7 +19,7 @@ public class Movimiento : MonoBehaviour
     public bool invulnerable;
     Vector3 centroOriginal;
     Vector3 centroAgache;
-    float fuerzaChoque = 3000f;
+    float fuerzaChoque = 30f;
 
     void Start()
     {
@@ -82,7 +82,7 @@ public class Movimiento : MonoBehaviour
         if (!invulnerable)
         {
             GameManager.instancia.restarSobredosis();
-            Vector3 direccionChoque = -transform.forward * velocidad * fuerzaChoque;
+            Vector3 direccionChoque = -transform.forward * velocidad/2; // con la velocidad creo que queda más natural 
             rb.AddForce(direccionChoque, ForceMode.Impulse);
             StartCoroutine(invulnerabilidad());
         }
