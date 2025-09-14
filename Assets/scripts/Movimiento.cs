@@ -19,6 +19,7 @@ public class Movimiento : MonoBehaviour
     public bool invulnerable;
     Vector3 centroOriginal;
     Vector3 centroAgache;
+    float fuerzaChoque = 3000f;
 
     void Start()
     {
@@ -63,6 +64,27 @@ public class Movimiento : MonoBehaviour
         {
             velocidad = velocidad - 1;
             tiempoVelocidad = 0;
+        }
+    }
+    IEnumerator invulnerabilidad()
+    {
+        invulnerable = true;
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log("invulnerable");
+
+        invulnerable = false;
+
+    }
+    public void Choque() 
+    {
+
+        if (!invulnerable)
+        {
+            GameManager.instancia.restarSobredosis();
+            Vector3 direccionChoque = -transform.forward * velocidad * fuerzaChoque;
+            rb.AddForce(direccionChoque, ForceMode.Impulse);
+            StartCoroutine(invulnerabilidad());
         }
     }
     void MovimientoLateral()
