@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
-    [SerializeField] float velocidad = 10;
-    [SerializeField] float velocidadLateral = 10;
-    [SerializeField] float fuerzaSalto = 600f;
+    public float velocidad = 10;
+    float velocidadLateral = 10;
+    float fuerzaSalto = 600f;
     [SerializeField] LayerMask capaSuelo;
     [SerializeField] CapsuleCollider hitboxJugador;
     float fuerzaLateral = 45f;
-    [SerializeField] Rigidbody rb;
+    public Rigidbody rb;
     public float tiempoVelocidad = 0;
     public float tiempo = 0;
     float alturaOriginal ;
     float alturaAgache  ;
+    public bool invulnerable;
     Vector3 centroOriginal;
     Vector3 centroAgache;
 
