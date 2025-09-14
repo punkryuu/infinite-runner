@@ -31,9 +31,7 @@ public class Movimiento : MonoBehaviour
 
     private void Update()
     {
-        if (!invulnerable) {
-            MovimientoLateral();
-        }
+        MovimientoLateral();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Saltar();
@@ -70,10 +68,10 @@ public class Movimiento : MonoBehaviour
     void MovimientoLateral()
     {
 
-            float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
-            Vector3 velocidadLateral = rb.velocity;
-            velocidadLateral.x = direccion * fuerzaLateral;
-            rb.velocity = velocidadLateral;
+         float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
+         Vector3 velocidadLateral = rb.velocity;
+         velocidadLateral.x = direccion * fuerzaLateral;
+         rb.velocity = velocidadLateral;
         
     }
     void Saltar()
