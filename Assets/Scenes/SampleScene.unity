@@ -723,7 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 56739228}
   segmentoPrefab: {fileID: 786083920}
-  longitudCamino: 50
+  longitudCamino: 120
   segmentosIniciales: 5
 --- !u!4 &1878158547
 Transform:
