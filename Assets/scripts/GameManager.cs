@@ -47,23 +47,6 @@ public class GameManager : MonoBehaviour
         }
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
     }
-    public void restarSobredosis()
-    {
-        indicadorSobredosis--;
-        if (material != null)
-        {
-            if (material.GetFloat(fuerzaDistorsion) > minimaDistorsion)//si ya esta en el minimo es tomteria
-                                                                       //hacer la operacion
-            {
-                float resultado = material.GetFloat(fuerzaDistorsion) - cantidadAOperar;//cogemos el valor
-                                                                                        //d la variable y le sumamos 
-                Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
-                material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
-            }
-        }
-        else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
-    }
-    //esto es para que no se vea todo distorsionado en el editor cuando cerramos el juego
     //esto es para que no se vea todo distorsionado en el editor cuando cerramos el juego
     private void OnApplicationQuit()
     {

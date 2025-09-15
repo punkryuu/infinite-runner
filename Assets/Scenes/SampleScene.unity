@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 100
+  velocidadLateral: 10
+  fuerzaSalto: 400
   capaSuelo:
     serializedVersion: 2
     m_Bits: 0
@@ -164,7 +166,6 @@ MonoBehaviour:
   rb: {fileID: 56739224}
   tiempoVelocidad: 0
   tiempo: 0
-  invulnerable: 0
 --- !u!65 &56739223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -775,11 +776,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2947239943629886683, guid: 7a62c5836daa04949b07344d7a80404c,
-        type: 3}
-      propertyPath: jugador
-      value: 
-      objectReference: {fileID: 56739221}
     - target: {fileID: 3313988045880888749, guid: 7a62c5836daa04949b07344d7a80404c,
         type: 3}
       propertyPath: m_Name
@@ -889,7 +885,7 @@ PrefabInstance:
     - target: {fileID: 797531367557916441, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 126.5
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 797531367557916441, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
         type: 3}

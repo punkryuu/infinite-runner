@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8590839300151198716}
   - component: {fileID: 4188316089820439289}
   - component: {fileID: 3860674364079054348}
-  - component: {fileID: 2947239943629886683}
   m_Layer: 0
   m_Name: "Obst\xE1culo"
   m_TagString: Untagged
@@ -30,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -108.8, y: 1, z: -9.2}
-  m_LocalScale: {x: 6.7288394, y: 6.7288394, z: 6.7288394}
+  m_LocalScale: {x: 6.162505, y: 6.162505, z: 6.162505}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,16 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2947239943629886683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3313988045880888749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e769b3e589b0bec48aa9546c2cd6807f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jugador: {fileID: 0}
