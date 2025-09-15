@@ -25,7 +25,7 @@ public class CaminoInfinito : MonoBehaviour
     //ahora se llama al trigger enter desde el prefab 
     public void CrearSegmento(GameObject segmento)
     {             
-           
+            // Remove the oldest segment
             GameObject viejo = segmentos.Dequeue();
             //reciclamos el segmento viejo poniendolo delante
             Vector3 nuevaPos = segmentos.Last().transform.position + new Vector3(0, 0, longitudCamino);
