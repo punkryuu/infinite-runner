@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movimiento : MonoBehaviour 
-{
+public class Movimiento : MonoBehaviour {
     public float velocidad = 10;
     float velocidadLateral = 10;
     float fuerzaSalto = 600f;
@@ -14,8 +13,8 @@ public class Movimiento : MonoBehaviour
     public Rigidbody rb;
     public float tiempoVelocidad = 0;
     public float tiempo = 0;
-    float alturaOriginal ;
-    float alturaAgache  ;
+    float alturaOriginal;
+    float alturaAgache;
     public bool invulnerable;
     Vector3 centroOriginal;
     Vector3 centroAgache;
@@ -82,7 +81,7 @@ public class Movimiento : MonoBehaviour
         if (!invulnerable)
         {
             GameManager.instancia.restarSobredosis();
-            Vector3 direccionChoque = -transform.forward * velocidad/2; // con la velocidad creo que queda más natural 
+            Vector3 direccionChoque = -transform.forward * velocidad / 2; // con la velocidad creo que queda más natural 
             rb.AddForce(direccionChoque, ForceMode.Impulse);
             StartCoroutine(invulnerabilidad());
         }
@@ -90,10 +89,11 @@ public class Movimiento : MonoBehaviour
     void MovimientoLateral()
     {
 
-         float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
-         Vector3 velocidadLateral = rb.velocity;
-         velocidadLateral.x = direccion * fuerzaLateral;
-         rb.velocity = velocidadLateral;
+        float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
+        Vector3 velocidadLateral = rb.velocity;
+        velocidadLateral.x = direccion * fuerzaLateral;
+        rb.velocity = velocidadLateral;
+
     }
     void Saltar()
     {
