@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1964516347660310709}
   - component: {fileID: 1833668361563397448}
   - component: {fileID: 1557738815343093299}
+  - component: {fileID: 54642886789230401}
   m_Layer: 6
   m_Name: Camino
   m_TagString: Untagged
@@ -142,3 +143,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15.209999, y: 33.1, z: 1.934174}
   m_Center: {x: 0, y: 0, z: 4.6878934}
+--- !u!114 &54642886789230401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911712122130382550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023894b6d08ee16449454dbb714736cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elemento: {fileID: 3266353705145537339, guid: 51919b6b3187ea34bb4afe90c4cb0931,
+    type: 3}
