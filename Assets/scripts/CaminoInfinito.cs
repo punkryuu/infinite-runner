@@ -30,9 +30,7 @@ public class CaminoInfinito : MonoBehaviour
             //reciclamos el segmento viejo poniendolo delante
             Vector3 nuevaPos = segmentos.Last().transform.position + new Vector3(0, 0, longitudCamino);
         viejo.transform.position = nuevaPos;
-        segmentos.Enqueue(viejo);
-        generadorDeElementos generador = viejo.GetComponent<generadorDeElementos>();
-        generador.generadorElementos();
+        segmentos.Enqueue(viejo);       
     }  
     
     // Update is called once per frame
