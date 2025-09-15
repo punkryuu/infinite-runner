@@ -94,7 +94,6 @@ public class Movimiento : MonoBehaviour
          Vector3 velocidadLateral = rb.velocity;
          velocidadLateral.x = direccion * fuerzaLateral;
          rb.velocity = velocidadLateral;
-
     }
     void Saltar()
     {
