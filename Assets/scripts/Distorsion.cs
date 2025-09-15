@@ -27,7 +27,7 @@ public class Distorsion : MonoBehaviour
     float minimaDistorsion = 0; //minimo (no se que puede llegar a pasar si baja del cero)
     public void restarDistorsion() 
     {
-        if (material.GetFloat(fuerzaDistorsion) >= minimaDistorsion) //si ya esta en el minimo es tomteria
+        if (material.GetFloat(fuerzaDistorsion) > minimaDistorsion) //si ya esta en el minimo es tomteria
                                                                     //hacer la operacion
         {
             float resultado = material.GetFloat(fuerzaDistorsion)- cantidadAOperar; //cogemos el valor
@@ -38,7 +38,7 @@ public class Distorsion : MonoBehaviour
     }
     public void sumarDistorsion()
     {
-        if (material.GetFloat(fuerzaDistorsion) <= maximaDistorsion)//si ya esta en el maximo es tomteria
+        if (material.GetFloat(fuerzaDistorsion) < maximaDistorsion)//si ya esta en el maximo es tomteria
                                                                    //hacer la operacion
         {
             float resultado = material.GetFloat(fuerzaDistorsion) + cantidadAOperar;//cogemos el valor
