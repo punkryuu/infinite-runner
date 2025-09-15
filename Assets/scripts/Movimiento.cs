@@ -76,7 +76,7 @@ public class Movimiento : MonoBehaviour
         invulnerable = false;
 
     }
-    public void Choque()
+    public void Choque() 
     {
 
         if (!invulnerable)
