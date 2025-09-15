@@ -38,7 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FuerzaDistorsion: 0.01
+    - _FuerzaDistorsion: 0
     - _multiplicarFinal: 0.03
     - _noiseSize: 20
     m_Colors:
