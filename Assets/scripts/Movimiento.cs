@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movimiento : MonoBehaviour 
+public class Movimiento : MonoBehaviour
 {
     public float velocidad = 10;
     float velocidadLateral = 10;
@@ -37,10 +37,10 @@ public class Movimiento : MonoBehaviour
         {
             Saltar();
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             Agacharse();
-        }
+        }     
     }
     void FixedUpdate()
     {
@@ -56,11 +56,11 @@ public class Movimiento : MonoBehaviour
     }
     void ReducirVelocidad()
     {
-        if (velocidad <= 0)
+        if(velocidad <= 0)
         {
             return;
         }
-        else if (tiempoVelocidad >= 5.0)
+        else if(tiempoVelocidad >= 5.0 )
         {
             velocidad = velocidad - 1;
             tiempoVelocidad = 0;
@@ -100,7 +100,7 @@ public class Movimiento : MonoBehaviour
     {
         float altura = GetComponent<Collider>().bounds.size.y;
         bool tocaSuelo = Physics.Raycast(transform.position, Vector3.down, altura / 2 + 0.1f, capaSuelo);
-        rb.AddForce(Vector3.up * fuerzaSalto);
+        rb.AddForce(Vector3.up * fuerzaSalto );
     }
     IEnumerator tiempoAgachado()
     {
@@ -114,6 +114,6 @@ public class Movimiento : MonoBehaviour
         hitboxJugador.height = alturaAgache;
         hitboxJugador.center = centroAgache;
         Debug.Log("Me agacho");
-        StartCoroutine(tiempoAgachado());
-    }
+        StartCoroutine(tiempoAgachado());              
+    }   
 }
