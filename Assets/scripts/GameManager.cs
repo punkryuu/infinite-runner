@@ -69,4 +69,20 @@ public class GameManager : MonoBehaviour
     {
         if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
     }
+    public void restarSobredosis()
+    {
+        indicadorSobredosis--;
+        if (material != null)
+        {
+            if (material.GetFloat(fuerzaDistorsion) < maximaDistorsion)//si ya esta en el maximo es tomteria
+                                                                       //hacer la operacion
+            {
+                float resultado = material.GetFloat(fuerzaDistorsion) - cantidadAOperar;//cogemos el valor
+                                                                                        //d la variable y le restamos
+                Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
+                material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
+            }
+        }
+    }
+
 }
