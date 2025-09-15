@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         indicadorSobredosis--;
         if (material != null)
         {
-            if (material.GetFloat(fuerzaDistorsion) < maximaDistorsion)//si ya esta en el maximo es tomteria
+            if (material.GetFloat(fuerzaDistorsion) > minimaDistorsion)//si ya esta en el maximo es tomteria
                                                                        //hacer la operacion
             {
                 float resultado = material.GetFloat(fuerzaDistorsion) - cantidadAOperar;//cogemos el valor
