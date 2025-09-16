@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Slider slider;
+    [SerializeField] GameObject sliderFill;
     private int indicadorSobredosis;
-    public int IndicadorSobredosis {get;set;}
+    //public int IndicadorSobredosis {get;set;}
     [SerializeField] Material material;//el material de distorsion con el shader
     string fuerzaDistorsion = "_FuerzaDistorsion";//metemos la variable que vamos a ajustar en un string para
                                                   //no tener que ver si la escribimos correctamente
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
+        sliderFill.SetActive(false);
     }
 
         // Update is called once per frame
@@ -43,8 +47,14 @@ public class GameManager : MonoBehaviour
                                                                                         //d la variable y le sumamos 
                 Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
                 material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
+                if (!sliderFill.activeSelf)
+                {
+                    sliderFill.SetActive(true);
+                }
+                slider.value = resultado;
             }
         }
+        
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
     }
     //esto es para que no se vea todo distorsionado en el editor cuando cerramos el juego
@@ -57,13 +67,17 @@ public class GameManager : MonoBehaviour
         indicadorSobredosis--;
         if (material != null)
         {
-            if (material.GetFloat(fuerzaDistorsion) < maximaDistorsion)//si ya esta en el maximo es tomteria
+            if (material.GetFloat(fuerzaDistorsion) < minimaDistorsion)//si ya esta en el minimo es tomteria
                                                                        //hacer la operacion
             {
                 float resultado = material.GetFloat(fuerzaDistorsion) - cantidadAOperar;//cogemos el valor
                                                                                         //d la variable y le restamos
                 Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
                 material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
+            }
+            if (slider.value<=0)
+            {
+                sliderFill.SetActive(false);
             }
         }
     }
