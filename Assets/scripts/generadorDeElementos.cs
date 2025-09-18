@@ -1,34 +1,49 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class generadorDeElementos : MonoBehaviour {
     [SerializeField] GameObject elemento;
+    [SerializeField] Transform jugador;
+    float distanciaSpawn = 100f;
+    float separacionZ = 50f;
+    float[] lineasX = { -9f,0, 9f };
+    float proximoSpawnZ = 100f;
     void Start()
     {
-        generadorElementos();
+        GeneradorElementos(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (jugador.position.z + distanciaSpawn >= proximoSpawnZ)
+        {
+            GeneradorElementos(proximoSpawnZ);
+            float separacionAleatoria = Random.Range(50f, 150f);
+            proximoSpawnZ += separacionAleatoria;
+        }
     }
 
-    public void generadorElementos()
+    public void GeneradorElementos(float zPos)
     {
-        int elementosAGenerar = Random.Range(0, 10);
-        for (int i = 0; i < elementosAGenerar; i++)
+        int carrilLibre = Random.Range(0, lineasX.Length);
+        for (int i = 0; i < lineasX.Length; i++)
         {
-            GameObject temp = Instantiate(elemento);
-            temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+            if (i == carrilLibre) continue;
+
+            if (Random.value > 0.5f)
+            {
+                Vector3 spawnPos = new Vector3(lineasX[i], 1f, zPos);
+                Instantiate(elemento, spawnPos, Quaternion.identity);
+            }
         }
 
     }
 
 
-
+    /*
     Vector3 GetRandomPointInCollider(Collider collider)
     {
         Vector3 point = new Vector3(
@@ -45,4 +60,5 @@ public class generadorDeElementos : MonoBehaviour {
         return point;
 
     }
+    */
 }
