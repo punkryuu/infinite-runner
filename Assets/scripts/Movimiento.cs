@@ -100,7 +100,10 @@ public class Movimiento : MonoBehaviour
     {
         float altura = GetComponent<Collider>().bounds.size.y;
         bool tocaSuelo = Physics.Raycast(transform.position, Vector3.down, altura / 2 + 0.1f, capaSuelo);
-        rb.AddForce(Vector3.up * fuerzaSalto );
+        if (tocaSuelo)
+        {
+            rb.AddForce(Vector3.up * fuerzaSalto);
+        }
     }
     IEnumerator tiempoAgachado()
     {
