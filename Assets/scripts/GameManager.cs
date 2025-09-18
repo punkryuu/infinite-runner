@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Material material;//el material de distorsion con el shader
     string fuerzaDistorsion = "_FuerzaDistorsion";//metemos la variable que vamos a ajustar en un string para
                                                   //no tener que ver si la escribimos correctamente
-    float cantidadAOperar = 0.005f;//cantidad que sumamos/restamos
+    float cantidadAOperar = 0.001f;//cantidad que sumamos/restamos
 
     //(es bastante grande pero bueno es jugar con los números)
     float maximaDistorsion = 1;//máximo(se puede cambiar pero ya es muchisimo)
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
                 {
                     sliderFill.SetActive(true);
                 }
-                slider.value = resultado*10;
+                slider.value = resultado;
             }
         }
         
