@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
                 {
                     sliderFill.SetActive(true);
                 }
-                slider.value = resultado;
+                slider.value = resultado*10;
             }
         }
         
