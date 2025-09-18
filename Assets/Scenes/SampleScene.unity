@@ -1277,6 +1277,11 @@ PrefabInstance:
       propertyPath: camino
       value: 
       objectReference: {fileID: 1878158546}
+    - target: {fileID: 4439299910713687093, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
+        type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 56739228}
     - target: {fileID: 8911712122130382550, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
         type: 3}
       propertyPath: m_Name
