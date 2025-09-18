@@ -644,12 +644,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &722926661 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3266353705145537339, guid: 51919b6b3187ea34bb4afe90c4cb0931,
-    type: 3}
-  m_PrefabInstance: {fileID: 7287709235337222535}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &749895379
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,12 +714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugador: {fileID: 0}
---- !u!4 &1517844165 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
-    type: 3}
-  m_PrefabInstance: {fileID: 7287709235337222535}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1878158545
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +724,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1878158547}
   - component: {fileID: 1878158546}
-  - component: {fileID: 1878158548}
   m_Layer: 0
   m_Name: CarreteraInfinita
   m_TagString: Untagged
@@ -772,23 +759,9 @@ Transform:
   m_LocalPosition: {x: 15.7, y: 92.85061, z: 159.00682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1517844165}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1878158548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1878158545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023894b6d08ee16449454dbb714736cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elemento: {fileID: 722926661}
 --- !u!1001 &908705439508188245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -870,11 +843,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 325878309193584453, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
-        type: 3}
-      propertyPath: elemento
-      value: 
-      objectReference: {fileID: 722926661}
     - target: {fileID: 797531367557916441, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -946,7 +914,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1878158547}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3266353705145537339, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
@@ -971,17 +939,17 @@ PrefabInstance:
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.599999
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -92.92061
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -32.50682
+      value: 126.5
       objectReference: {fileID: 0}
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
@@ -991,17 +959,17 @@ PrefabInstance:
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7891328337942678150, guid: 51919b6b3187ea34bb4afe90c4cb0931,
         type: 3}
@@ -1100,6 +1068,7 @@ SceneRoots:
   - {fileID: 7673215067948806433}
   - {fileID: 908705439508188245}
   - {fileID: 124966480}
+  - {fileID: 7287709235337222535}
   - {fileID: 1878158547}
   - {fileID: 3281540279800517581}
   - {fileID: 749895381}
