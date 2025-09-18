@@ -4,10 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class generadorDeElementos : MonoBehaviour {
-    public GameObject elemento;
+    [SerializeField] GameObject elemento;
     void Start()
     {
-        // generadorElementos();
+        generadorElementos();
     }
 
     // Update is called once per frame
