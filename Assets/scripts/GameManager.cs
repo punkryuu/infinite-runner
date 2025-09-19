@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia;
-    [SerializeField] Slider slider;
-    [SerializeField] GameObject sliderFill;
-    public int indicadorSobredosis;
-    //public int IndicadorSobredosis {get;set;}
+    [SerializeField] UIManager uiManager;
+    
+    private int indicadorSobredosis;
+    public int IndicadorSobredosis {get;set;}
     [SerializeField] Material material;//el material de distorsion con el shader
     string fuerzaDistorsion = "_FuerzaDistorsion";//metemos la variable que vamos a ajustar en un string para
                                                   //no tener que ver si la escribimos correctamente
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
-        sliderFill.SetActive(false);
+        
     }
 
         // Update is called once per frame
@@ -57,11 +57,9 @@ public class GameManager : MonoBehaviour
                                                                                         //d la variable y le sumamos 
                 Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
                 material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
-                if (!sliderFill.activeSelf)
-                {
-                    sliderFill.SetActive(true);
-                }
-                slider.value = resultado;
+                uiManager.ActivarSlider();
+                uiManager.CambiarValorSlider(resultado);
+                
             }
         }
         
@@ -84,11 +82,10 @@ public class GameManager : MonoBehaviour
                                                                                         //d la variable y le restamos
                 Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
                 material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
+                uiManager.DesactivarSlider();
+                uiManager.CambiarValorSlider(resultado);
             }
-            if (slider.value<=0)
-            {
-                sliderFill.SetActive(false);
-            }
+            
         }
     }
 

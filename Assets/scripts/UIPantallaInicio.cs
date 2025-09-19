@@ -11,10 +11,13 @@ public class UIPantallaInicio : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+    /*
+     * en cargar una escena tarda bastante es mejor mostrar y ocultar un panel
     void BotonOpciones()
     {
         SceneManager.LoadScene("SampleScene");
     }
+    */
     void BotonCreditos()
     {
         SceneManager.LoadScene("SampleScene");
@@ -22,5 +25,10 @@ public class UIPantallaInicio : MonoBehaviour
     public void BotonCinematicas()
     {
         SceneManager.LoadScene("Cinemáticas");
+    }
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
     }
 }

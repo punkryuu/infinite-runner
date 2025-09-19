@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 683534396}
   - component: {fileID: 683534395}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PerdisteTexto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -807,10 +807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2899c39fbe7ac4992100fdb4f2388f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1601065857}
-  sliderFill: {fileID: 1719766676}
-  indicadorSobredosis: 0
+  uiManager: {fileID: 0}
   material: {fileID: 2100000, guid: b816c093125a58a4395152516fb551e6, type: 2}
+  contadorMuerte: 0
 --- !u!4 &749895381
 Transform:
   m_ObjectHideFlags: 0
@@ -849,7 +848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &871051545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -937,7 +936,7 @@ GameObject:
   - component: {fileID: 1601065856}
   - component: {fileID: 1601065857}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: BarraBorrachera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,7 +949,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601065855}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -958,10 +957,10 @@ RectTransform:
   - {fileID: 1956145184}
   - {fileID: 1705706496}
   m_Father: {fileID: 1650008207}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -405, y: -145}
+  m_AnchoredPosition: {x: -347, y: -145}
   m_SizeDelta: {x: 155, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601065857
@@ -1133,6 +1132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoMuerte: {fileID: 683534395}
+  slider: {fileID: 0}
+  sliderFill: {fileID: 0}
 --- !u!1 &1705706495
 GameObject:
   m_ObjectHideFlags: 0
