@@ -159,6 +159,7 @@ MonoBehaviour:
   elemento: {fileID: 3266353705145537339, guid: 51919b6b3187ea34bb4afe90c4cb0931,
     type: 3}
   jugador: {fileID: 0}
+  obstaculo: {fileID: 0}
 --- !u!1001 &8758068561984628403
 PrefabInstance:
   m_ObjectHideFlags: 0

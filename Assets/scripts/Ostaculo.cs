@@ -13,11 +13,13 @@ public class Ostaculo : MonoBehaviour
 
     void Start()
     {
-    //GameObject jugador = GameObject.FindGameObjectWithTag(playerTag);   lo he puesto con un serializefield
+        
+    GameObject jugador = GameObject.FindGameObjectWithTag(playerTag);   //lo he puesto con un serializefield
       if (jugador != null)
       {
         movimientoJugador = jugador.GetComponent<Movimiento>();
       }  
+        
     }
     void Update()
     {
