@@ -83,8 +83,9 @@ public class Movimiento : MonoBehaviour
     IEnumerator invulnerabilidad()
     {
         invulnerable = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         justoAnimation.AnimarCancelarChocar();
+        yield return new WaitForSeconds(0.25f);
         Debug.Log("invulnerable");
 
         invulnerable = false;
