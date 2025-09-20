@@ -20,19 +20,32 @@ public class Movimiento : MonoBehaviour
     Vector3 centroOriginal;
     Vector3 centroAgache;
     float fuerzaChoque = 30f;
+    JustoAnimation justoAnimation;
+    bool tocaSuelo;
+    float altura;
 
     void Start()
     {
+        altura = GetComponent<Collider>().bounds.size.y;
         hitboxJugador = GetComponent<CapsuleCollider>();
+        justoAnimation = GetComponentInChildren<JustoAnimation>();   
         alturaOriginal = hitboxJugador.height;
         alturaAgache = alturaOriginal / 2;
         centroOriginal = hitboxJugador.center;
         centroAgache = centroOriginal - new Vector3(0 - (alturaOriginal - alturaAgache) / 2f, 0);
+
     }
 
     private void Update()
     {
+
+        tocaSuelo = Physics.Raycast(transform.position, Vector3.down, altura / 2 + 0.1f, capaSuelo);
         MovimientoLateral();
+        if (tocaSuelo)
+        {
+            justoAnimation.AnimarCorrer();
+            justoAnimation.AnimarCancelarSaltar();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Saltar();
@@ -40,7 +53,8 @@ public class Movimiento : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             Agacharse();
-        }     
+        }
+
     }
     void FixedUpdate()
     {
@@ -69,11 +83,13 @@ public class Movimiento : MonoBehaviour
     IEnumerator invulnerabilidad()
     {
         invulnerable = true;
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(0.25f);
+        justoAnimation.AnimarCancelarChocar();
+        yield return new WaitForSeconds(0.25f);
         Debug.Log("invulnerable");
 
         invulnerable = false;
+
 
     }
     public void Choque() 
@@ -83,6 +99,7 @@ public class Movimiento : MonoBehaviour
         {
             GameManager.instancia.restarSobredosis();
             Vector3 direccionChoque = -transform.forward * velocidad/2; // con la velocidad creo que queda más natural 
+            justoAnimation.AnimarChocar();
             rb.AddForce(direccionChoque, ForceMode.Impulse);
             StartCoroutine(invulnerabilidad());
         }
@@ -98,11 +115,12 @@ public class Movimiento : MonoBehaviour
     }
     void Saltar()
     {
-        float altura = GetComponent<Collider>().bounds.size.y;
-        bool tocaSuelo = Physics.Raycast(transform.position, Vector3.down, altura / 2 + 0.1f, capaSuelo);
+        
+        
         if (tocaSuelo)
         {
             rb.AddForce(Vector3.up * fuerzaSalto);
+            justoAnimation.AnimarSaltar();
         }
     }
     IEnumerator tiempoAgachado()
@@ -111,12 +129,15 @@ public class Movimiento : MonoBehaviour
         hitboxJugador.height = alturaOriginal;
         hitboxJugador.center = centroOriginal;
         Debug.Log("Me Subo");
+        justoAnimation.AnimarCancelarRodar();
     }
     void Agacharse()
     {
         hitboxJugador.height = alturaAgache;
         hitboxJugador.center = centroAgache;
         Debug.Log("Me agacho");
-        StartCoroutine(tiempoAgachado());              
+        justoAnimation.AnimarRodar();
+        StartCoroutine(tiempoAgachado());
+        
     }   
 }

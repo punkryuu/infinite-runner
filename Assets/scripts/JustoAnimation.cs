@@ -2,15 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
-{
+public class JustoAnimation : MonoBehaviour {
     private Animator mAnimator;
     void Start()
     {
         mAnimator = GetComponent<Animator>();
     }
 
+    public void AnimarCorrer()
+    {
+        mAnimator.SetBool("IsRunning", true);
+    }
+    public void AnimarPerder() 
+    {
+        mAnimator.SetBool("Lose", true);
+    }
+    public void AnimarSaltar() 
+    {
+        mAnimator.SetBool("Jump", true);
+    }
+    public void AnimarCancelarSaltar()
+    {
+        mAnimator.SetBool("Jump", false);
+    }
+    public void AnimarChocar() 
+    {
+        mAnimator.SetBool("Splash", true);
+    }
+    public void AnimarCancelarChocar()
+    {
+        mAnimator.SetBool("Splash", false);
+    }
     
+    public void AnimarRodar()
+    {
+        mAnimator.SetBool("Roll", true);
+    }
+    public void AnimarCancelarRodar()
+    {
+        mAnimator.SetBool("Roll", false);
+    }
+    /*
     void Update()
     {
         if (mAnimator != null)
@@ -63,4 +95,5 @@ public class NewBehaviourScript : MonoBehaviour
 
         }
     }
+    */
 }
