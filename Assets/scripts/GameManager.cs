@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia;
-    [SerializeField] UIManager uiManager;
+    UIManager uiManager;
     
     private int indicadorSobredosis;
     public int IndicadorSobredosis {get;set;}
@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
     {
         if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
-        
+        uiManager = UIManager.instancia;
+
     }
 
         // Update is called once per frame

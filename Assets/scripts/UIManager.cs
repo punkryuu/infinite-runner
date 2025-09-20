@@ -6,9 +6,23 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instancia;
     [SerializeField] TextMeshProUGUI textoMuerte;
     [SerializeField] Slider slider;
     [SerializeField] GameObject sliderFill;
+
+    public void Awake()//EL SINGLETON JAJJAJAJA
+    {
+        if (instancia == null)
+        {
+            instancia = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         sliderFill.SetActive(false);
