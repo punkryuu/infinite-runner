@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movimiento : MonoBehaviour {
+public class Movimiento : MonoBehaviour
+{
     public float velocidad = 10;
     float velocidadLateral = 10;
     float fuerzaSalto = 600f;
@@ -13,8 +14,8 @@ public class Movimiento : MonoBehaviour {
     public Rigidbody rb;
     public float tiempoVelocidad = 0;
     public float tiempo = 0;
-    float alturaOriginal;
-    float alturaAgache;
+    float alturaOriginal ;
+    float alturaAgache  ;
     public bool invulnerable;
     Vector3 centroOriginal;
     Vector3 centroAgache;
@@ -27,7 +28,7 @@ public class Movimiento : MonoBehaviour {
     {
         altura = GetComponent<Collider>().bounds.size.y;
         hitboxJugador = GetComponent<CapsuleCollider>();
-        justoAnimation = GetComponentInChildren<JustoAnimation>();
+        justoAnimation = GetComponentInChildren<JustoAnimation>();   
         alturaOriginal = hitboxJugador.height;
         alturaAgache = alturaOriginal / 2;
         centroOriginal = hitboxJugador.center;
@@ -49,7 +50,7 @@ public class Movimiento : MonoBehaviour {
         {
             Saltar();
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             Agacharse();
         }
@@ -69,13 +70,13 @@ public class Movimiento : MonoBehaviour {
     }
     void ReducirVelocidad()
     {
-        if (velocidad <= 0)
+        if(velocidad <= 0)
         {
             return;
         }
-        else if (tiempoVelocidad >= 5.0)
+        else if(tiempoVelocidad >= 5.0 )
         {
-            velocidad = velocidad - 2;
+            velocidad = velocidad - 1;
             tiempoVelocidad = 0;
         }
     }
@@ -91,13 +92,13 @@ public class Movimiento : MonoBehaviour {
 
 
     }
-    public void Choque()
+    public void Choque() 
     {
 
         if (!invulnerable)
         {
             GameManager.instancia.restarSobredosis();
-            Vector3 direccionChoque = -transform.forward * velocidad / 2; // con la velocidad creo que queda más natural 
+            Vector3 direccionChoque = -transform.forward * velocidad/2; // con la velocidad creo que queda más natural 
             justoAnimation.AnimarChocar();
             rb.AddForce(direccionChoque, ForceMode.Impulse);
             StartCoroutine(invulnerabilidad());
@@ -106,15 +107,16 @@ public class Movimiento : MonoBehaviour {
     void MovimientoLateral()
     {
 
-        float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
-        Vector3 velocidadLateral = rb.velocity;
-        velocidadLateral.x = direccion * fuerzaLateral;
-        rb.velocity = velocidadLateral;
-
+         float direccion = Input.GetAxis("Horizontal"); //Pillar el movimiento del Jugador
+         Vector3 velocidadLateral = rb.velocity;
+         velocidadLateral.x = direccion * fuerzaLateral;
+         rb.velocity = velocidadLateral;
+        
     }
     void Saltar()
     {
-
+        
+        
         if (tocaSuelo)
         {
             rb.AddForce(Vector3.up * fuerzaSalto);
@@ -136,6 +138,6 @@ public class Movimiento : MonoBehaviour {
         Debug.Log("Me agacho");
         justoAnimation.AnimarRodar();
         StartCoroutine(tiempoAgachado());
-
-    }
+        
+    }   
 }

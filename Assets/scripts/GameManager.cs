@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public static GameManager instancia;
-    UIManager uiManager;
+    UIManager uiManager; 
     private int indicadorSobredosis;
-    public int IndicadorSobredosis { get; set; }
+    public int IndicadorSobredosis {get;set;}
     [SerializeField] Material material;//el material de distorsion con el shader
     string fuerzaDistorsion = "_FuerzaDistorsion";//metemos la variable que vamos a ajustar en un string para                                                //no tener que ver si la escribimos correctamente
     float cantidadAOperar = 0.0025f;//cantidad que sumamos/restamos
@@ -18,11 +19,9 @@ public class GameManager : MonoBehaviour {
     public int contadorMuerte = 0;
     public bool escenaCargada = false;
     public bool acabaDeMorir = false;
-    public ChocarMujer chocarMujer;
-
     public void Awake()
     {
-        if (instancia == null)
+        if(instancia == null)
         {
             instancia = this;
             DontDestroyOnLoad(gameObject);
@@ -37,13 +36,15 @@ public class GameManager : MonoBehaviour {
         if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
         uiManager = UIManager.instancia;
-        chocarMujer = FindObjectOfType<ChocarMujer>();
+
     }
+
+        // Update is called once per frame
     void Update()
     {
-        RegistrarMuerte();
+       RegistrarMuerte();
     }
-    public void sumarSobredosis()
+    public void sumarSobredosis() 
     {
         indicadorSobredosis++;
         if (material != null)
@@ -57,10 +58,10 @@ public class GameManager : MonoBehaviour {
                 material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
                 uiManager.ActivarSlider();
                 uiManager.CambiarValorSlider(resultado);
-
+                
             }
         }
-
+        
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
     }
     //esto es para que no se vea todo distorsionado en el editor cuando cerramos el juego
@@ -83,27 +84,22 @@ public class GameManager : MonoBehaviour {
                 uiManager.DesactivarSlider();
                 uiManager.CambiarValorSlider(resultado);
             }
-
+            
         }
     }
 
-
     public void RegistrarMuerte()
     {
-        if (!escenaCargada && (indicadorSobredosis >= 5 || (chocarMujer != null && chocarMujer.tocaMujer))
-)
+        if (!escenaCargada && indicadorSobredosis >= 5)
         {
-            escenaCargada = true;
-            contadorMuerte++;
+            escenaCargada = true; 
+            contadorMuerte++; 
             acabaDeMorir = true;
-            if (chocarMujer != null)
-            {
-                chocarMujer.tocaMujer = false;
-            }
             VideoManager.instancia.DesbloquearCinematica();
             SceneManager.LoadScene("Reproductor");
             indicadorSobredosis = 0;
         }
+               
     }
 
 }
