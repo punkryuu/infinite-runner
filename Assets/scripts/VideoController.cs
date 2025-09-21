@@ -11,13 +11,20 @@ public class VideoController : MonoBehaviour
     public VideoPlayer reproductorCinematica2;
     public RawImage cargaCinematica;
     // Start is called before the first frame update
+    
     void Start()
     {
-        cargaCinematica.gameObject.SetActive(false);
-        reproductorCinematica1.targetTexture = (RenderTexture)cargaCinematica.texture;
-        reproductorCinematica2.targetTexture = (RenderTexture)cargaCinematica.texture;
+            cargaCinematica.gameObject.SetActive(false);
+
+            if (GameManager.instancia != null && GameManager.instancia.acabaDeMorir)
+            {
+                CasosMuerte(GameManager.instancia.contadorMuerte);
+                GameManager.instancia.acabaDeMorir = false;
+            }   
 
     }
+
+
 
     void Update()
     {

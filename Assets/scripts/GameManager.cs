@@ -95,13 +95,15 @@ public class GameManager : MonoBehaviour
              escenaCargada = true;
              contadorMuerte++;
             acabaDeMorir = true;
-            var vc =FindObjectOfType<VideoController>();
+            /*var vc =FindObjectOfType<VideoController>();
             if(vc != null)
             {
                 vc.CasosMuerte(contadorMuerte);
                 VideoManager.instancia.DesbloquearCinematica();
-            }
+            }*/
+            SceneManager.LoadScene("Reproductor");
             indicadorSobredosis = 0;
+            
         }
                
     }
