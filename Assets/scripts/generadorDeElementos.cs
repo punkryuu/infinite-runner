@@ -6,10 +6,11 @@ using UnityEngine;
 public class generadorDeElementos : MonoBehaviour {
     [SerializeField] GameObject elemento;
     [SerializeField] Transform jugador;
+    [SerializeField] GameObject obstaculo;
     float distanciaSpawn = 100f;
     float separacionZ = 50f;
     float[] lineasX = { -9f,0, 9f };
-    float proximoSpawnZ = 100f;
+    float proximoSpawnZ = 200f;
     void Start()
     {
         GeneradorElementos(0);
@@ -31,15 +32,30 @@ public class generadorDeElementos : MonoBehaviour {
         int carrilLibre = Random.Range(0, lineasX.Length);
         for (int i = 0; i < lineasX.Length; i++)
         {
-            if (i == carrilLibre) continue;
+            Vector3 spawnPos = new Vector3(lineasX[i], 1f, zPos);
 
-            if (Random.value > 0.5f)
+            if (i == carrilLibre)
             {
-                Vector3 spawnPos = new Vector3(lineasX[i], 1f, zPos);
-                Instantiate(elemento, spawnPos, Quaternion.identity);
+                //elemento o  vacío
+                if (Random.value > 0.5f)
+                {
+                    Instantiate(elemento, spawnPos, Quaternion.identity);
+                }
             }
-        }
+            else
+            {
+                //  obstáculo o elemento
+                if (Random.value > 0.5f)
+                {
+                    Instantiate(obstaculo, spawnPos, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(elemento, spawnPos, Quaternion.identity);
+                }
+            }
 
+        }
     }
 
 

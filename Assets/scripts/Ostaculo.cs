@@ -8,16 +8,18 @@ public class Ostaculo : MonoBehaviour
     Vector3 direccionChoque;
     Vector3 direccionMovimiento;
     Movimiento movimientoJugador;
-    [SerializeField]GameObject jugador;
+    //[SerializeField]GameObject jugador;
 
 
     void Start()
     {
-    //GameObject jugador = GameObject.FindGameObjectWithTag(playerTag);   lo he puesto con un serializefield
+        
+    GameObject jugador = GameObject.FindGameObjectWithTag(playerTag);   //lo he puesto con un serializefield
       if (jugador != null)
       {
         movimientoJugador = jugador.GetComponent<Movimiento>();
       }  
+        
     }
     void Update()
     {
