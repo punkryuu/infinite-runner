@@ -6,6 +6,7 @@ public class Obtenible : MonoBehaviour
 {
     string playerTag = "Player";
     public float velocidadRotamiento = 90f;
+
     void Start()
     {
         

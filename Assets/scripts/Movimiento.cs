@@ -23,6 +23,9 @@ public class Movimiento : MonoBehaviour
     JustoAnimation justoAnimation;
     bool tocaSuelo;
     float altura;
+    public AudioSource sonidoAndar;
+    public AudioSource sonidoGolpe;
+
 
     void Start()
     {
@@ -66,6 +69,7 @@ public class Movimiento : MonoBehaviour
             tiempo += Time.deltaTime;
             tiempoVelocidad += Time.deltaTime;
             ReducirVelocidad();
+            sonidoAndar.PlayOneShot(sonidoAndar.clip);
         }
     }
     void ReducirVelocidad()
@@ -101,6 +105,7 @@ public class Movimiento : MonoBehaviour
             Vector3 direccionChoque = -transform.forward * velocidad/2; // con la velocidad creo que queda más natural 
             justoAnimation.AnimarChocar();
             rb.AddForce(direccionChoque, ForceMode.Impulse);
+            sonidoGolpe.PlayOneShot(sonidoGolpe.clip);
             StartCoroutine(invulnerabilidad());
         }
     }

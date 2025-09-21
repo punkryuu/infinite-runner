@@ -14,6 +14,10 @@ public class VideoManager : MonoBehaviour
     public VideoManager videoManager;
     public bool cinematica1Vista = false;
     public bool cinematica2Vista = false;
+    public bool cinematica3Vista = false;
+    public bool cinematica4Vista = false;
+    public bool cinematica5Vista = false;
+
     public int numeroCinematica = 0;
 
     private void Awake()
@@ -41,7 +45,10 @@ public class VideoManager : MonoBehaviour
     public void DesbloquearCinematica()
     {
         if (GameManager.instancia.contadorMuerte >= 1) cinematica1Vista = true;
-        if (GameManager.instancia.contadorMuerte >= 2) cinematica2Vista = true;
+        else if (GameManager.instancia.contadorMuerte >= 2) cinematica2Vista = true;
+        else if (GameManager.instancia.contadorMuerte >= 3) cinematica3Vista = true;
+        else if (GameManager.instancia.contadorMuerte >= 4) cinematica4Vista = true;
+        else if (GameManager.instancia.contadorMuerte == 5) cinematica2Vista = true;
     }
 
 

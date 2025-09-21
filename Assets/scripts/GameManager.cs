@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool escenaCargada = false;
     public bool acabaDeMorir = false;
     public ChocarMujer chocarMujer;
+    public AudioSource sonidoBeber;
 
     public void Awake()
     {
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     public void sumarSobredosis() 
     {
         indicadorSobredosis++;
+        sonidoBeber.PlayOneShot(sonidoBeber.clip);
         if (material != null)
         {
             if (material.GetFloat(fuerzaDistorsion) < maximaDistorsion)//si ya esta en el maximo es tomteria
