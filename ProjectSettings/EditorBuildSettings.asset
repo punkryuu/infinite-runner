@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Cinem\xE1ticas.unity"
     guid: d9ad2db3bc21a8f47a935e5af95b5f36
+  - enabled: 1
+    path: Assets/Scenes/Reproductor.unity
+    guid: ac9ce70b5dd0b8f42a626a04ceb05dda
   m_configObjects: {}
