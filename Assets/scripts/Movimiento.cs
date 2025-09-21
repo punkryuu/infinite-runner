@@ -80,7 +80,7 @@ public class Movimiento : MonoBehaviour
         }
         else if(tiempoVelocidad >= 5.0 )
         {
-            velocidad = velocidad - 1;
+            velocidad = velocidad - 2;
             tiempoVelocidad = 0;
         }
     }

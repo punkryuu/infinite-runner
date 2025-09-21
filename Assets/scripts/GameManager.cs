@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     }  
     public void RegistrarMuerte()
     {
-        if (!escenaCargada && (indicadorSobredosis >= 5 || (chocarMujer != null && chocarMujer.tocaMujer))
+        if (!escenaCargada && (indicadorSobredosis >= 10 || (chocarMujer != null && chocarMujer.tocaMujer))
 )
         {
             escenaCargada = true; 
