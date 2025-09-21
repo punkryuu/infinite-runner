@@ -8,7 +8,7 @@ public class Ostaculo : MonoBehaviour
     Vector3 direccionChoque;
     Vector3 direccionMovimiento;
     Movimiento movimientoJugador;
-    [SerializeField]GameObject jugador;
+    //[SerializeField]GameObject jugador;
 
 
     void Start()
