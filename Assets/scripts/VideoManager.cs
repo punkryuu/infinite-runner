@@ -14,7 +14,7 @@ public class VideoManager : MonoBehaviour
     public VideoManager videoManager;
     public bool cinematica1Vista = false;
     public bool cinematica2Vista = false;
-    int numeroCinematica;
+    public int numeroCinematica = 0;
 
     private void Awake()
     {

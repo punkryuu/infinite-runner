@@ -91,16 +91,12 @@ public class GameManager : MonoBehaviour
     public void RegistrarMuerte()
     {
         if (!escenaCargada && indicadorSobredosis >= 5)
-            {
-             escenaCargada = true;
-             contadorMuerte++;
+        {
+            escenaCargada = true; 
+            contadorMuerte++; 
             acabaDeMorir = true;
-            var vc =FindObjectOfType<VideoController>();
-            if(vc != null)
-            {
-                vc.CasosMuerte(contadorMuerte);
-                VideoManager.instancia.DesbloquearCinematica();
-            }
+            VideoManager.instancia.DesbloquearCinematica();
+            SceneManager.LoadScene("Reproductor");
             indicadorSobredosis = 0;
         }
                

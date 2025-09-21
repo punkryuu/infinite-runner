@@ -10,14 +10,24 @@ public class VideoController : MonoBehaviour
     public VideoPlayer reproductorCinematica1;
     public VideoPlayer reproductorCinematica2;
     public RawImage cargaCinematica;
-    // Start is called before the first frame update
     void Start()
     {
         cargaCinematica.gameObject.SetActive(false);
-        reproductorCinematica1.targetTexture = (RenderTexture)cargaCinematica.texture;
-        reproductorCinematica2.targetTexture = (RenderTexture)cargaCinematica.texture;
 
+        if (GameManager.instancia != null && GameManager.instancia.acabaDeMorir)
+        {
+
+            CasosMuerte(GameManager.instancia.contadorMuerte);
+            GameManager.instancia.acabaDeMorir = false;
+        }
+        else if (VideoManager.instancia != null && VideoManager.instancia.numeroCinematica > 0)
+        {
+            CasosMuerte(VideoManager.instancia.numeroCinematica);
+            VideoManager.instancia.numeroCinematica = 0; // reset
+        }
     }
+
+
 
     void Update()
     {
@@ -47,18 +57,19 @@ public class VideoController : MonoBehaviour
        
          if (GameManager.instancia.contadorMuerte >=1 && VideoManager.instancia.cinematica1Vista)
         {
-            MostrarCinematica(reproductorCinematica1);
+            VideoManager.instancia.numeroCinematica = 1;
+            SceneManager.LoadScene("Reproductor");
         }
     }
     public void BotonCinematica2()
     {
         if (GameManager.instancia.contadorMuerte >= 2 && VideoManager.instancia.cinematica2Vista)
         {
-            MostrarCinematica(reproductorCinematica2);
+            VideoManager.instancia.numeroCinematica = 2;
+            SceneManager.LoadScene("Reproductor");
         }
        
     }
-
 
     public void MostrarCinematica(VideoPlayer vid)
     {
