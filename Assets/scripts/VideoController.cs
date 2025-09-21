@@ -20,7 +20,13 @@ public class VideoController : MonoBehaviour
             {
                 CasosMuerte(GameManager.instancia.contadorMuerte);
                 GameManager.instancia.acabaDeMorir = false;
-            }   
+            }
+             else if (VideoManager.instancia != null && VideoManager.instancia.numeroCinematica > 0)
+            {
+            
+                CasosMuerte(VideoManager.instancia.numeroCinematica);
+             VideoManager.instancia.numeroCinematica = 0; // reset
+            }
 
     }
 
@@ -54,14 +60,16 @@ public class VideoController : MonoBehaviour
        
          if (GameManager.instancia.contadorMuerte >=1 && VideoManager.instancia.cinematica1Vista)
         {
-            MostrarCinematica(reproductorCinematica1);
+            VideoManager.instancia.numeroCinematica = 1;
+            SceneManager.LoadScene("Reproductor");
         }
     }
     public void BotonCinematica2()
     {
         if (GameManager.instancia.contadorMuerte >= 2 && VideoManager.instancia.cinematica2Vista)
         {
-            MostrarCinematica(reproductorCinematica2);
+            VideoManager.instancia.numeroCinematica = 2;
+            SceneManager.LoadScene("Reproductor");
         }
        
     }
