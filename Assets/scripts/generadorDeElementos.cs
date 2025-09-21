@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class generadorDeElementos : MonoBehaviour {
     [SerializeField] GameObject elemento;
     [SerializeField] Transform jugador;
     [SerializeField] GameObject obstaculo;
+    [SerializeField] Reciclador PoolElementos;    
+    [SerializeField] Reciclador PoolObstaculos;
     float distanciaSpawn = 100f;
     float separacionZ = 50f;
     float[] lineasX = { -9f,0, 9f };
@@ -39,19 +42,28 @@ public class generadorDeElementos : MonoBehaviour {
                 //elemento o  vacío
                 if (Random.value > 0.5f)
                 {
-                    Instantiate(elemento, spawnPos, Quaternion.identity);
+                    GameObject obj = PoolElementos.Get(spawnPos);
+                    AutoReciclar auto = obj.GetComponent<AutoReciclar>();
+                    auto.SetJugador(jugador);
+                    auto.SetPool(PoolElementos);
                 }
             }
             else
             {
                 //  obstáculo o elemento
-                if (Random.value > 0.5f)
+                if (Random.value > 0.65f)
                 {
-                    Instantiate(obstaculo, spawnPos, Quaternion.identity);
+                    GameObject obj = PoolObstaculos.Get(spawnPos);
+                    AutoReciclar auto = obj.GetComponent<AutoReciclar>();
+                    auto.SetJugador(jugador);
+                    auto.SetPool(PoolObstaculos);
                 }
                 else
                 {
-                    Instantiate(elemento, spawnPos, Quaternion.identity);
+                    GameObject obj = PoolElementos.Get(spawnPos);
+                    AutoReciclar auto = obj.GetComponent<AutoReciclar>();
+                    auto.SetJugador(jugador);
+                    auto.SetPool(PoolElementos);
                 }
             }
 
