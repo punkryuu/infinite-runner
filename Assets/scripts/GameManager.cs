@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public int contadorMuerte = 0;
     public bool escenaCargada = false;
     public bool acabaDeMorir = false;
+    public ChocarMujer chocarMujer;
+
     public void Awake()
     {
         if(instancia == null)
@@ -36,10 +38,8 @@ public class GameManager : MonoBehaviour
         if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
         uiManager = UIManager.instancia;
-
+        chocarMujer = FindObjectOfType<ChocarMujer>();
     }
-
-        // Update is called once per frame
     void Update()
     {
        RegistrarMuerte();
@@ -86,20 +86,23 @@ public class GameManager : MonoBehaviour
             }
             
         }
-    }
-
+    }  
     public void RegistrarMuerte()
     {
-        if (!escenaCargada && indicadorSobredosis >= 5)
+        if (!escenaCargada && (indicadorSobredosis >= 5 || (chocarMujer != null && chocarMujer.tocaMujer))
+)
         {
             escenaCargada = true; 
             contadorMuerte++; 
             acabaDeMorir = true;
+            if (chocarMujer != null)
+            {
+                chocarMujer.tocaMujer = false;
+            }            
             VideoManager.instancia.DesbloquearCinematica();
             SceneManager.LoadScene("Reproductor");
             indicadorSobredosis = 0;
         }
-               
     }
 
 }
