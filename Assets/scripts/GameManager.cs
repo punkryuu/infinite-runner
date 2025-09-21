@@ -7,21 +7,19 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia;
-    UIManager uiManager;
-    
+    UIManager uiManager; 
     private int indicadorSobredosis;
     public int IndicadorSobredosis {get;set;}
     [SerializeField] Material material;//el material de distorsion con el shader
-    string fuerzaDistorsion = "_FuerzaDistorsion";//metemos la variable que vamos a ajustar en un string para
-                                                  //no tener que ver si la escribimos correctamente
+    string fuerzaDistorsion = "_FuerzaDistorsion";//metemos la variable que vamos a ajustar en un string para                                                //no tener que ver si la escribimos correctamente
     float cantidadAOperar = 0.0025f;//cantidad que sumamos/restamos
-
     //(es bastante grande pero bueno es jugar con los números)
     float maximaDistorsion = 1;//máximo(se puede cambiar pero ya es muchisimo)
     float minimaDistorsion = 0; //minimo (no se que puede llegar a pasar si baja del cero)
-    public int contadorMuerte;
-    private bool escenaCargada = false;
-    public void Awake()//EL SINGLETON JAJJAJAJA
+    public int contadorMuerte = 0;
+    public bool escenaCargada = false;
+    public bool acabaDeMorir = false;
+    public void Awake()
     {
         if(instancia == null)
         {
@@ -96,10 +94,16 @@ public class GameManager : MonoBehaviour
             {
              escenaCargada = true;
              contadorMuerte++;
-            SceneManager.LoadScene("PantallaDeInicio");
-
+            acabaDeMorir = true;
+            var vc =FindObjectOfType<VideoController>();
+            if(vc != null)
+            {
+                vc.CasosMuerte(contadorMuerte);
+                VideoManager.instancia.DesbloquearCinematica();
+            }
+            indicadorSobredosis = 0;
         }
-        
+               
     }
 
 }
