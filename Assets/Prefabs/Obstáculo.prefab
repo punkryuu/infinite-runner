@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4188316089820439289}
   - component: {fileID: 3860674364079054348}
   - component: {fileID: 2947239943629886683}
+  - component: {fileID: -587948492117648994}
   m_Layer: 0
   m_Name: "Obst\xE1culo"
   m_TagString: Untagged
@@ -118,4 +119,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e769b3e589b0bec48aa9546c2cd6807f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jugador: {fileID: 93609053818330366, guid: 264c47ce7c408f34fa37ae78efa8f580, type: 3}
+--- !u!114 &-587948492117648994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3313988045880888749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add44d7e49deb6d489f9ba37c24f58ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: obstaculo
