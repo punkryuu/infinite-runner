@@ -76,7 +76,7 @@ public class Movimiento : MonoBehaviour
         }
         else if(tiempoVelocidad >= 5.0 )
         {
-            velocidad = velocidad - 1;
+            velocidad = velocidad - 2;
             tiempoVelocidad = 0;
         }
     }
@@ -115,8 +115,7 @@ public class Movimiento : MonoBehaviour
     }
     void Saltar()
     {
-        
-        
+              
         if (tocaSuelo)
         {
             rb.AddForce(Vector3.up * fuerzaSalto);
