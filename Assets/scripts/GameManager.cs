@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
         uiManager = UIManager.instancia;
         chocarMujer = FindObjectOfType<ChocarMujer>();
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+
+    }
+    private void ChangedActiveScene(Scene current, Scene next) 
+    { 
+        if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
     }
     void Update()
     {
