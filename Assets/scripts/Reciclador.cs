@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 
 public class Reciclador : MonoBehaviour
 {
-    [SerializeField] GameObject prefab;       // pewrefab que va a reciclar este pool
+    [SerializeField] GameObject [] prefabs;       // pewrefab que va a reciclar este pool
     [SerializeField] int cantidadInicial = 30;
 
     Queue<GameObject> pool = new Queue<GameObject>();
@@ -15,6 +15,7 @@ public class Reciclador : MonoBehaviour
     {
         for (int i = 0; i < cantidadInicial; i++)
         {
+            GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
             GameObject obj = Instantiate(prefab);
             obj.SetActive(false);
             pool.Enqueue(obj);
@@ -32,6 +33,7 @@ public class Reciclador : MonoBehaviour
         }
         else
         {
+            GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
             obj = Instantiate(prefab);
         }
 
