@@ -7,7 +7,7 @@ public class Movimiento : MonoBehaviour
 {
     public float velocidad = 10;
     float velocidadLateral = 10;
-    float fuerzaSalto = 600f;
+    float fuerzaSalto = 100f;
     [SerializeField] LayerMask capaSuelo;
     [SerializeField] CapsuleCollider hitboxJugador;
     float fuerzaLateral = 45f;
@@ -124,9 +124,15 @@ public class Movimiento : MonoBehaviour
         
         if (tocaSuelo)
         {
-            rb.AddForce(Vector3.up * fuerzaSalto);
+            rb.AddForce(Vector3.up * fuerzaSalto,ForceMode.Impulse);
             justoAnimation.AnimarSaltar();
+            StartCoroutine(tiempoSaltar());
         }
+    }
+    IEnumerator tiempoSaltar() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        rb.AddForce(Vector3.down * fuerzaSalto*3,ForceMode.Impulse);
     }
     IEnumerator tiempoAgachado()
     {

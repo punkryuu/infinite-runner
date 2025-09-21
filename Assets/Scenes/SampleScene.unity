@@ -2103,6 +2103,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1557738815343093299, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 60.939896
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557738815343093299, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 13.919949
+      objectReference: {fileID: 0}
     - target: {fileID: 1833668361563397448, guid: bbfedf4f2e6690f4bbc20f70ab6b5aa0,
         type: 3}
       propertyPath: camino
@@ -2206,6 +2216,11 @@ PrefabInstance:
       propertyPath: sonidoGolpe
       value: 
       objectReference: {fileID: 1376292815}
+    - target: {fileID: 8644739641688380347, guid: 264c47ce7c408f34fa37ae78efa8f580,
+        type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
