@@ -541,6 +541,7 @@ MonoBehaviour:
   contadorMuerte: 0
   escenaCargada: 0
   acabaDeMorir: 0
+  chocarMujer: {fileID: 0}
 --- !u!4 &749895381
 Transform:
   m_ObjectHideFlags: 0
@@ -1557,6 +1558,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mujer
       objectReference: {fileID: 0}
+    - target: {fileID: 7633183014514877099, guid: 3f8b37c9fe740ef43a5268672243f9ee,
+        type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 56739228}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
