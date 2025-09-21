@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         if (material != null) material.SetFloat(fuerzaDistorsion, minimaDistorsion);
         else { Debug.Log("se te olvido poner el material en el gamemanager ma g"); }
+        indicadorSobredosis = 0;
         uiManager = UIManager.instancia;
         chocarMujer = FindObjectOfType<ChocarMujer>();
         SceneManager.activeSceneChanged += ChangedActiveScene;
@@ -62,10 +63,11 @@ public class GameManager : MonoBehaviour
             {
                 float resultado = material.GetFloat(fuerzaDistorsion) + cantidadAOperar;//cogemos el valor
                                                                                         //d la variable y le sumamos 
-                Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
+                //Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
                 material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
                 uiManager.ActivarSlider();
-                uiManager.CambiarValorSlider(resultado);
+                float valorSlider = indicadorSobredosis;
+                uiManager.CambiarValorSlider(valorSlider);
                 
             }
         }
@@ -87,10 +89,11 @@ public class GameManager : MonoBehaviour
             {
                 float resultado = material.GetFloat(fuerzaDistorsion) - cantidadAOperar;//cogemos el valor
                                                                                         //d la variable y le restamos
-                Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
+                //Mathf.Clamp(resultado, minimaDistorsion, maximaDistorsion);// lo clampeamos al máximo si hace falta
                 material.SetFloat(fuerzaDistorsion, resultado);//lo aplicamos al material
                 uiManager.DesactivarSlider();
-                uiManager.CambiarValorSlider(resultado);
+                float valorSlider = indicadorSobredosis;
+                uiManager.CambiarValorSlider(valorSlider);
             }
             
         }
